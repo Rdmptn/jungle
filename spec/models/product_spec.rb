@@ -6,7 +6,7 @@ RSpec.describe Product, type: :model do
     it 'validates a product with all 4 fields will save successfully' do
       @category = Category.create(name: "Food")
       @product = @category.products.create({name: "Burger", quantity: 5, price: 55.55})
-      expect(@product).to be_truthy
+      expect(@product.errors.full_messages).to eq []
     end
     it 'validates a name is given' do
       @category = Category.create(name: "Toys")
